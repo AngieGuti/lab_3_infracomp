@@ -14,10 +14,10 @@ public class Cajero extends Thread {
         HashMap<String, Integer> cliente = fila.atenderCliente(cliente_uid);
         if(cliente != null) {
             Double tiempoDeProcesamiento =cliente.get("procesamientoBasico")* factorDeCansancio;
-            Double tiempoDormir= cliente.get("procesamientoBasico")*0.01 + factorDeCansancio;
+            factorDeCansancio+= cliente.get("procesamientoBasico")*0.01;
             
             try {
-                Thread.sleep(tiempoDormir.longValue()); 
+                Thread.sleep(tiempoDeProcesamiento.longValue()); 
             
             } catch (InterruptedException e) {  
                 e.printStackTrace();
